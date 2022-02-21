@@ -32,7 +32,7 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 255)]
     private $lastname;
 
-    #[ORM\Column(type: 'blob', nullable: true)]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $avatar;
 
     #[ORM\Column(type: 'datetime')]
@@ -41,19 +41,19 @@ class Admin implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'admin', targetEntity: Agent::class)]
     private $agents;
 
-    #[ORM\OneToMany(mappedBy: 'admin', targetEntity: skills::class)]
+    #[ORM\OneToMany(mappedBy: 'admin', targetEntity: Skills::class)]
     private $skills;
 
-    #[ORM\OneToMany(mappedBy: 'admin', targetEntity: hidingplace::class)]
+    #[ORM\OneToMany(mappedBy: 'admin', targetEntity: HidingPlace::class)]
     private $hidingplace;
 
-    #[ORM\OneToMany(mappedBy: 'admin', targetEntity: mission::class)]
+    #[ORM\OneToMany(mappedBy: 'admin', targetEntity: Mission::class)]
     private $mission;
 
-    #[ORM\OneToMany(mappedBy: 'admin', targetEntity: contact::class)]
+    #[ORM\OneToMany(mappedBy: 'admin', targetEntity: Contact::class)]
     private $contact;
 
-    #[ORM\OneToMany(mappedBy: 'admin', targetEntity: target::class)]
+    #[ORM\OneToMany(mappedBy: 'admin', targetEntity: Target::class)]
     private $target;
 
     public function __construct()

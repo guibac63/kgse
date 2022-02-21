@@ -24,16 +24,16 @@ class Country
     #[ORM\OneToMany(mappedBy: 'country', targetEntity: Agent::class)]
     private $agents;
 
-    #[ORM\OneToMany(mappedBy: 'country', targetEntity: hidingplace::class)]
+    #[ORM\OneToMany(mappedBy: 'country', targetEntity: HidingPlace::class)]
     private $hiding_place;
 
-    #[ORM\OneToMany(mappedBy: 'country', targetEntity: mission::class)]
+    #[ORM\OneToMany(mappedBy: 'country', targetEntity: Mission::class)]
     private $mission;
 
-    #[ORM\OneToMany(mappedBy: 'country', targetEntity: target::class)]
+    #[ORM\OneToMany(mappedBy: 'country', targetEntity: Target::class)]
     private $target;
 
-    #[ORM\OneToMany(mappedBy: 'country', targetEntity: contact::class)]
+    #[ORM\OneToMany(mappedBy: 'country', targetEntity: Contact::class)]
     private $contact;
 
     public function __construct()

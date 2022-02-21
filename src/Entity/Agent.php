@@ -24,23 +24,23 @@ class Agent
     #[ORM\Column(type: 'date')]
     private $birth_date;
 
-    #[ORM\Column(type: 'blob', nullable: true)]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $avatar;
 
     #[ORM\Column(type: 'datetime', nullable: true)]
     private $last_update;
 
-    #[ORM\ManyToMany(targetEntity: skills::class, inversedBy: 'agents')]
+    #[ORM\ManyToMany(targetEntity: Skills::class, inversedBy: 'agents')]
     private $agent_skills;
 
-    #[ORM\ManyToMany(targetEntity: mission::class, inversedBy: 'agents')]
+    #[ORM\ManyToMany(targetEntity: Mission::class, inversedBy: 'agents')]
     private $mission_agent;
 
-    #[ORM\ManyToOne(targetEntity: country::class, inversedBy: 'agents')]
+    #[ORM\ManyToOne(targetEntity: Country::class, inversedBy: 'agents')]
     #[ORM\JoinColumn(nullable: false)]
     private $country;
 
-    #[ORM\ManyToOne(targetEntity: admin::class, inversedBy: 'agents')]
+    #[ORM\ManyToOne(targetEntity: Admin::class, inversedBy: 'agents')]
     private $admin;
 
     public function __construct()

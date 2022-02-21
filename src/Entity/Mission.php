@@ -49,17 +49,17 @@ class Mission
     #[ORM\ManyToOne(targetEntity: Admin::class, inversedBy: 'mission')]
     private $admin;
 
-    #[ORM\OneToMany(mappedBy: 'mission', targetEntity: target::class)]
+    #[ORM\OneToMany(mappedBy: 'mission', targetEntity: Target::class)]
     private $target;
 
-    #[ORM\ManyToOne(targetEntity: skills::class, inversedBy: 'missions')]
+    #[ORM\ManyToOne(targetEntity: Skills::class, inversedBy: 'missions')]
     #[ORM\JoinColumn(nullable: false)]
     private $skills;
 
-    #[ORM\ManyToMany(targetEntity: contact::class, inversedBy: 'missions')]
+    #[ORM\ManyToMany(targetEntity: Contact::class, inversedBy: 'missions')]
     private $contact;
 
-    #[ORM\ManyToMany(targetEntity: hidingplace::class, inversedBy: 'missions')]
+    #[ORM\ManyToMany(targetEntity: HidingPlace::class, inversedBy: 'missions')]
     private $hidingplace;
 
     public function __construct()
