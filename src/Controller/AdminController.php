@@ -25,7 +25,7 @@ class AdminController extends AbstractController
         $ad->setLastname('Lionheart');
         $ad->setEmail('admin@gmail.com');
         $ad->setCreationDate(new \DateTime('now'));
-        $ad->setRoles(['ADMIN_USER']);
+        $ad->setRoles(['ROLE_ADMIN']);
         $ad->setAvatar('/public/images/admin.jfif');
 
 
