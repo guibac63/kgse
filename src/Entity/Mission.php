@@ -39,9 +39,6 @@ class Mission
     #[ORM\Column(type: 'datetime', nullable: true)]
     private $last_update;
 
-    #[ORM\ManyToMany(targetEntity: Agent::class, mappedBy: 'mission_agent')]
-    private $agents;
-
     #[ORM\ManyToOne(targetEntity: Country::class, inversedBy: 'mission')]
     #[ORM\JoinColumn(nullable: false)]
     private $country;
@@ -62,12 +59,15 @@ class Mission
     #[ORM\ManyToMany(targetEntity: HidingPlace::class, inversedBy: 'missions')]
     private $hidingplace;
 
+    #[ORM\ManyToMany(targetEntity: agent::class, inversedBy: 'missions')]
+    private $agent;
+
     public function __construct()
     {
-        $this->agents = new ArrayCollection();
         $this->target = new ArrayCollection();
         $this->contact = new ArrayCollection();
         $this->hidingplace = new ArrayCollection();
+        $this->agent = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -171,19 +171,11 @@ class Mission
         return $this;
     }
 
-    /**
-     * @return Collection<int, Agent>
-     */
-    public function getAgents(): Collection
-    {
-        return $this->agents;
-    }
-
     public function addAgent(Agent $agent): self
     {
-        if (!$this->agents->contains($agent)) {
-            $this->agents[] = $agent;
-            $agent->addMissionAgent($this);
+        if (!$this->agent->contains($agent)) {
+            $this->agent[] = $agent;
+            $agent->addMission($this);
         }
 
         return $this;
@@ -191,8 +183,8 @@ class Mission
 
     public function removeAgent(Agent $agent): self
     {
-        if ($this->agents->removeElement($agent)) {
-            $agent->removeMissionAgent($this);
+        if ($this->agent->removeElement($agent)) {
+            $agent->removeMission($this);
         }
 
         return $this;
@@ -315,5 +307,13 @@ class Mission
     public function __toString()
     {
         return $this->title;
+    }
+
+    /**
+     * @return Collection<int, agent>
+     */
+    public function getAgent(): Collection
+    {
+        return $this->agent;
     }
 }

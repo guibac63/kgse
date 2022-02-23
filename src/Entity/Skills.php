@@ -21,7 +21,7 @@ class Skills
     #[ORM\Column(type: 'datetime', nullable: true)]
     private $last_update;
 
-    #[ORM\ManyToMany(targetEntity: Agent::class, mappedBy: 'agent_skills')]
+    #[ORM\ManyToMany(targetEntity: Agent::class, mappedBy: 'agent')]
     private $agents;
 
     #[ORM\ManyToOne(targetEntity: Admin::class, inversedBy: 'skills')]

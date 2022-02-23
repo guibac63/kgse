@@ -16,7 +16,7 @@ class Contact
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $fisrtname;
+    private $firstname;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $lastname;
@@ -50,14 +50,14 @@ class Contact
         return $this->id;
     }
 
-    public function getFisrtname(): ?string
+    public function getFirstname(): ?string
     {
-        return $this->fisrtname;
+        return $this->firstname;
     }
 
-    public function setFisrtname(string $fisrtname): self
+    public function setFirstname(string $firstname): self
     {
-        $this->fisrtname = $fisrtname;
+        $this->firstname = $firstname;
 
         return $this;
     }
@@ -159,5 +159,10 @@ class Contact
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getCodeName();
     }
 }

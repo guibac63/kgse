@@ -6,6 +6,7 @@ use App\Repository\AgentRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JetBrains\PhpStorm\Pure;
 
 #[ORM\Entity(repositoryClass: AgentRepository::class)]
 class Agent
@@ -30,12 +31,6 @@ class Agent
     #[ORM\Column(type: 'datetime', nullable: true)]
     private $last_update;
 
-    #[ORM\ManyToMany(targetEntity: Skills::class, inversedBy: 'agents')]
-    private $agent_skills;
-
-    #[ORM\ManyToMany(targetEntity: Mission::class, inversedBy: 'agents')]
-    private $mission_agent;
-
     #[ORM\ManyToOne(targetEntity: Country::class, inversedBy: 'agents')]
     #[ORM\JoinColumn(nullable: false)]
     private $country;
@@ -43,10 +38,15 @@ class Agent
     #[ORM\ManyToOne(targetEntity: Admin::class, inversedBy: 'agents')]
     private $admin;
 
+    #[ORM\ManyToMany(targetEntity: Mission::class, mappedBy: 'agent')]
+    private $missions;
+
+    #[ORM\ManyToMany(targetEntity: Skills::class, inversedBy: 'agent')]
+    private $agent_skills;
+
     public function __construct()
     {
-        $this->agent_skills = new ArrayCollection();
-        $this->mission_agent = new ArrayCollection();
+        $this->missions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -138,30 +138,6 @@ class Agent
         return $this;
     }
 
-    /**
-     * @return Collection<int, mission>
-     */
-    public function getMissionAgent(): Collection
-    {
-        return $this->mission_agent;
-    }
-
-    public function addMissionAgent(mission $missionAgent): self
-    {
-        if (!$this->mission_agent->contains($missionAgent)) {
-            $this->mission_agent[] = $missionAgent;
-        }
-
-        return $this;
-    }
-
-    public function removeMissionAgent(mission $missionAgent): self
-    {
-        $this->mission_agent->removeElement($missionAgent);
-
-        return $this;
-    }
-
     public function getCountry(): ?country
     {
         return $this->country;
@@ -186,5 +162,36 @@ class Agent
         return $this;
     }
 
+    #[Pure] public function __toString(): string
+    {
+        return ($this->getFirstname().' '.$this->getLastname());
+    }
+
+    /**
+     * @return Collection<int, Mission>
+     */
+    public function getMissions(): Collection
+    {
+        return $this->missions;
+    }
+
+    public function addMission(Mission $mission): self
+    {
+        if (!$this->missions->contains($mission)) {
+            $this->missions[] = $mission;
+            $mission->addAgent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMission(Mission $mission): self
+    {
+        if ($this->missions->removeElement($mission)) {
+            $mission->removeAgent($this);
+        }
+
+        return $this;
+    }
 
 }

@@ -25,6 +25,7 @@ class SkillsCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             TextField::new('name'),
             DateTimeField::new('last_update')->hideOnForm(),
+            IdField::new('admin')->hideOnForm()
         ];
     }
 

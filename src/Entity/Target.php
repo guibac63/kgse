@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\TargetRepository;
 use Doctrine\ORM\Mapping as ORM;
+use JetBrains\PhpStorm\Pure;
 
 #[ORM\Entity(repositoryClass: TargetRepository::class)]
 class Target
@@ -14,7 +15,7 @@ class Target
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $fisrtname;
+    private $firstname;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $lastname;
@@ -44,14 +45,14 @@ class Target
         return $this->id;
     }
 
-    public function getFisrtname(): ?string
+    public function getFirstname(): ?string
     {
-        return $this->fisrtname;
+        return $this->firstname;
     }
 
-    public function setFisrtname(string $fisrtname): self
+    public function setFirstname(string $firstname): self
     {
-        $this->fisrtname = $fisrtname;
+        $this->firstname = $firstname;
 
         return $this;
     }
@@ -138,5 +139,10 @@ class Target
         $this->mission = $mission;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+       return $this->code_name;
     }
 }

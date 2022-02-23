@@ -130,4 +130,9 @@ class HidingPlace
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->address;
+    }
 }
