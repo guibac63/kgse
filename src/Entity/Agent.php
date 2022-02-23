@@ -41,11 +41,12 @@ class Agent
     #[ORM\ManyToMany(targetEntity: Mission::class, mappedBy: 'agent')]
     private $missions;
 
-    #[ORM\ManyToMany(targetEntity: Skills::class, inversedBy: 'agent')]
+    #[ORM\ManyToMany(targetEntity: Skills::class, inversedBy: 'agents')]
     private $agent_skills;
 
     public function __construct()
     {
+        $this->agent_skills = new ArrayCollection();
         $this->missions = new ArrayCollection();
     }
 

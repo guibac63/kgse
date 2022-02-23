@@ -37,6 +37,7 @@ class EventSubscriberPersist implements EventSubscriberInterface
         if(!$entInstance instanceof Country && !$entInstance instanceof Admin){
             $entInstance->setAdmin($this->security->getUser());
             $entInstance->setLastUpdate(new \DateTime('now'));
+            return;
         };
     }
 }
