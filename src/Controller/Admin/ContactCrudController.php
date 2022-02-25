@@ -35,10 +35,6 @@ class ContactCrudController extends AbstractCrudController
         ];
     }
 
-    public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
-    {
-        if (!$entityInstance instanceof Contact) return;
-        $entityInstance->setLastUpdate(new \DateTime('now'));
-        parent::persistEntity($entityManager,$entityInstance);
-    }
+
+
 }

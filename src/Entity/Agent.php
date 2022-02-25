@@ -165,7 +165,7 @@ class Agent
 
     #[Pure] public function __toString(): string
     {
-        return ($this->getFirstname().' '.$this->getLastname());
+        return ($this->getFirstname().' '.$this->getLastname().' - '.$this->country);
     }
 
     /**

@@ -163,6 +163,6 @@ class Contact
 
     public function __toString()
     {
-        return $this->getCodeName();
+        return ($this->code_name.' - '.$this->country);
     }
 }

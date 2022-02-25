@@ -46,9 +46,6 @@ class Mission
     #[ORM\ManyToOne(targetEntity: Admin::class, inversedBy: 'mission')]
     private $admin;
 
-    #[ORM\OneToMany(mappedBy: 'mission', targetEntity: Target::class)]
-    private $target;
-
     #[ORM\ManyToOne(targetEntity: Skills::class, inversedBy: 'missions')]
     #[ORM\JoinColumn(nullable: false)]
     private $skills;
@@ -62,12 +59,18 @@ class Mission
     #[ORM\ManyToMany(targetEntity: agent::class, inversedBy: 'missions')]
     private $agent;
 
+    #[ORM\ManyToMany(targetEntity: target::class, inversedBy: 'missions')]
+    private $target;
+
+
+
     public function __construct()
     {
-        $this->target = new ArrayCollection();
         $this->contact = new ArrayCollection();
         $this->hidingplace = new ArrayCollection();
         $this->agent = new ArrayCollection();
+        //$this->targets = new ArrayCollection();
+        $this->target = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -171,6 +174,14 @@ class Mission
         return $this;
     }
 
+    /**
+     * @return Collection<int, agent>
+     */
+    public function getAgent(): Collection
+    {
+        return $this->agent;
+    }
+
     public function addAgent(Agent $agent): self
     {
         if (!$this->agent->contains($agent)) {
@@ -210,36 +221,6 @@ class Mission
     public function setAdmin(?Admin $admin): self
     {
         $this->admin = $admin;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, target>
-     */
-    public function getTarget(): Collection
-    {
-        return $this->target;
-    }
-
-    public function addTarget(target $target): self
-    {
-        if (!$this->target->contains($target)) {
-            $this->target[] = $target;
-            $target->setMission($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTarget(target $target): self
-    {
-        if ($this->target->removeElement($target)) {
-            // set the owning side to null (unless already changed)
-            if ($target->getMission() === $this) {
-                $target->setMission(null);
-            }
-        }
 
         return $this;
     }
@@ -304,16 +285,32 @@ class Mission
         return $this;
     }
 
+    /**
+     * @return Collection<int, target>
+     */
+    public function getTarget(): Collection
+    {
+        return $this->target;
+    }
+
+    public function addTarget(target $target): self
+    {
+        if (!$this->target->contains($target)) {
+            $this->target[] = $target;
+        }
+
+        return $this;
+    }
+
+    public function removeTarget(target $target): self
+    {
+        $this->target->removeElement($target);
+
+        return $this;
+    }
+
     public function __toString()
     {
         return $this->title;
-    }
-
-    /**
-     * @return Collection<int, agent>
-     */
-    public function getAgent(): Collection
-    {
-        return $this->agent;
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\TargetRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use JetBrains\PhpStorm\Pure;
 
@@ -36,9 +38,17 @@ class Target
     #[ORM\ManyToOne(targetEntity: Admin::class, inversedBy: 'target')]
     private $admin;
 
-    #[ORM\ManyToOne(targetEntity: Mission::class, inversedBy: 'target')]
-    #[ORM\JoinColumn(nullable: false)]
-    private $mission;
+    #[ORM\ManyToMany(targetEntity: Mission::class, mappedBy: 'target')]
+    private $missions;
+
+
+
+    public function __construct()
+    {
+        //$this->mission = new ArrayCollection();
+        $this->missions = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -129,20 +139,36 @@ class Target
         return $this;
     }
 
-    public function getMission(): ?Mission
+    public function __toString()
     {
-        return $this->mission;
+       return ($this->code_name.' - '.$this->country);
     }
 
-    public function setMission(?Mission $mission): self
+    /**
+     * @return Collection<int, Mission>
+     */
+    public function getMissions(): Collection
     {
-        $this->mission = $mission;
+        return $this->missions;
+    }
+
+    public function addMission(Mission $mission): self
+    {
+        if (!$this->missions->contains($mission)) {
+            $this->missions[] = $mission;
+            $mission->addTarget($this);
+        }
 
         return $this;
     }
 
-    public function __toString()
+    public function removeMission(Mission $mission): self
     {
-       return $this->code_name;
+        if ($this->missions->removeElement($mission)) {
+            $mission->removeTarget($this);
+        }
+
+        return $this;
     }
+
 }
