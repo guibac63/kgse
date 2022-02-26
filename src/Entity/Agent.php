@@ -7,8 +7,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use JetBrains\PhpStorm\Pure;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: AgentRepository::class)]
+#[Vich\Uploadable]
 class Agent
 {
     #[ORM\Id]
@@ -28,8 +31,8 @@ class Agent
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $avatar;
 
-    #[ORM\Column(type: 'datetime', nullable: true)]
-    private $last_update;
+    #[Vich\UploadableField(mapping: 'avatar_images', fileNameProperty: 'avatar')]
+    private ?File $avatarFile = null;
 
     #[ORM\ManyToOne(targetEntity: Country::class, inversedBy: 'agents')]
     #[ORM\JoinColumn(nullable: false)]
@@ -43,6 +46,9 @@ class Agent
 
     #[ORM\ManyToMany(targetEntity: Skills::class, inversedBy: 'agents')]
     private $agent_skills;
+
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private $last_update;
 
     public function __construct()
     {
@@ -101,6 +107,26 @@ class Agent
         $this->avatar = $avatar;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAvatarFile()
+    {
+        return $this->avatarFile;
+    }
+
+    /**
+     * @param mixed $avatarFile
+     */
+    public function setAvatarFile(File $avatarFile = null): void
+    {
+        $this->avatarFile = $avatarFile;
+
+        if($avatarFile){
+            $this->last_update = new \DateTime('now');
+        }
     }
 
     public function getLastUpdate(): ?\DateTimeInterface

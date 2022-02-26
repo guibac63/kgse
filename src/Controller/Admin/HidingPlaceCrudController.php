@@ -49,7 +49,7 @@ class HidingPlaceCrudController extends AbstractCrudController
             TextField::new('address'),
             ChoiceField::new('type')->setChoices(['Hôtel'=>'HOTEL','Appartement'=>'APPARTEMENT','Villa'=>'VILLA','Châlet'=>'CHALET','Centre militaire'=>'CENTRE MILITAIRE']),
             DateTimeField::new('last_update')->hideOnForm(),
-            AssociationField::new('country')->hideWhenCreating(),
+            AssociationField::new('country'),
             AssociationField::new('missions')->setDisabled(),
             IdField::new('admin')->hideOnForm()
         ];

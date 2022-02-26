@@ -33,6 +33,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Security\Permission;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Constraints\Date;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class AgentCrudController extends AbstractCrudController
 {
@@ -50,13 +51,11 @@ class AgentCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id')->hideOnForm(),
+            IdField::new('id')->hideOnForm()->hideOnIndex(),
             TextField::new('firstname'),
             TextField::new('lastname'),
-            ImageField::new('avatar')
-                ->setBasePath("/public/images")
-                ->setUploadDir("/public/images")
-                ->setSortable(false),
+            TextField::new('avatarFile')->setFormType(VichImageType::class)->hideOnIndex(),
+            ImageField::new('avatar')->setBasePath('/images/avatars/')->onlyOnIndex(),
             DateField::new('birth_date'),
             DateTimeField::new('last_update')->hideOnForm(),
             AssociationField::new('agent_skills')->setFormTypeOption('required',true),

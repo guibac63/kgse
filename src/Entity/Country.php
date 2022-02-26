@@ -6,8 +6,12 @@ use App\Repository\CountryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: CountryRepository::class)]
+#[Vich\Uploadable]
+
 class Country
 {
     #[ORM\Id]
@@ -18,8 +22,11 @@ class Country
     #[ORM\Column(type: 'string', length: 255)]
     private $name;
 
-    #[ORM\Column(type: 'blob', nullable: true)]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $flag;
+
+    #[Vich\UploadableField(mapping: 'flag_images', fileNameProperty: 'flag')]
+    private ?File $flagFile = null;
 
     #[ORM\OneToMany(mappedBy: 'country', targetEntity: Agent::class)]
     private $agents;
@@ -72,6 +79,22 @@ class Country
         $this->flag = $flag;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFlagFile()
+    {
+        return $this->flagFile;
+    }
+
+    /**
+     * @param mixed $flagFile
+     */
+    public function setFlagFile(File $flagFile = null): void
+    {
+        $this->flagFile = $flagFile;
     }
 
     /**

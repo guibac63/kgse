@@ -8,13 +8,14 @@ use App\Entity\Contact;
 use App\Entity\Country;
 use App\Entity\HidingPlace;
 use App\Entity\Mission;
+use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeCrudActionEvent;
 use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityPersistedEvent;
 use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityUpdatedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Security;
-use EasyCorp\Bundle\EasyAdminBundle\Event\StoppableEventTrait;
+
 
 
 class EventSubscriberPersist implements EventSubscriberInterface
@@ -31,6 +32,7 @@ class EventSubscriberPersist implements EventSubscriberInterface
         return[
             BeforeEntityPersistedEvent::class => ['setAdminId'],
             BeforeEntityUpdatedEvent::class=> ['updateAdminId'],
+
         ];
     }
 
@@ -47,6 +49,8 @@ class EventSubscriberPersist implements EventSubscriberInterface
         };
     }
 
+
+
     public function updateAdminId(BeforeEntityUpdatedEvent $event)
     {
         $entInstance = $event->getEntityInstance();
@@ -58,8 +62,5 @@ class EventSubscriberPersist implements EventSubscriberInterface
             return;
         };
     }
-
-
-
 
 }
