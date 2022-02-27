@@ -128,8 +128,8 @@ class MissionCrudController extends AbstractCrudController
         };
 
         //skills verification
-        $agentsSkills = [];
         $missionSkill = $entityInstance->getSkills()->getId();
+        $agentsSkills = [];
 
         //get all the skills id of all the agents
         foreach($agents as $agent){

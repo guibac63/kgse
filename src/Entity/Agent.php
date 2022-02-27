@@ -50,6 +50,9 @@ class Agent
     #[ORM\Column(type: 'datetime', nullable: true)]
     private $last_update;
 
+
+    private string $skillsToString;
+
     public function __construct()
     {
         $this->agent_skills = new ArrayCollection();
@@ -189,11 +192,6 @@ class Agent
         return $this;
     }
 
-    #[Pure] public function __toString(): string
-    {
-        return ($this->getFirstname().' '.$this->getLastname().' - '.$this->country);
-    }
-
     /**
      * @return Collection<int, Mission>
      */
@@ -219,6 +217,19 @@ class Agent
         }
 
         return $this;
+    }
+
+    public function getSkillsToString():string
+    {
+        $skillsNames =[];
+        $skillsToMap =  $this->getAgentSkills();
+        foreach ($skillsToMap as $skill) $skillsNames[] = $skill->getName();
+        return implode(' - ',$skillsNames);
+    }
+
+    #[Pure] public function __toString(): string
+    {
+        return ($this->getFirstname().' '.$this->getLastname().' - '.$this->country.' - '.$this->getSkillsToString());
     }
 
 }
