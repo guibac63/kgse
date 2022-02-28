@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: "Orbitron";
+    src: url("/public/fonts/Orbitron.ttf");
+}
+
+.content-container-small{
+    min-height: calc(100vh - 9rem)
+}
+
+@media (min-width: 640px) {
+    .content-container-all{
+        min-height: calc(100vh - 5rem)
+    }
+}
+
+

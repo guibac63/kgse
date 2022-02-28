@@ -4,7 +4,17 @@ module.exports = {
       "./templates/**/*.{html,twig}"
   ],
   theme: {
-    extend: {},
+      fontFamily:{
+        'open-sans':['"Open Sans"','ui-sans-serif'],
+        'orbitron':['Orbitron','Arial'],
+          'segoe':['"Segoe UI"','Helvetica Neue']
+      },
+    extend: {
+        backgroundImage: {
+            'kgse-bg':"url('/public/images/background/BACKGROUND.jpg')",
+            'admin' : "url('/public/images/admin/08.jpg')"
+        }
+    },
   },
   plugins: [],
 }

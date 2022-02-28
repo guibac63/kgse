@@ -1,5 +1,3 @@
-import postcss_import from "postcss-import";
-
 let tailwindcss = require("tailwindcss")
 
 module.exports = {
