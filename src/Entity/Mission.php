@@ -56,10 +56,10 @@ class Mission
     #[ORM\ManyToMany(targetEntity: HidingPlace::class, inversedBy: 'missions')]
     private $hidingplace;
 
-    #[ORM\ManyToMany(targetEntity: agent::class, inversedBy: 'missions')]
+    #[ORM\ManyToMany(targetEntity: Agent::class, inversedBy: 'missions')]
     private $agent;
 
-    #[ORM\ManyToMany(targetEntity: target::class, inversedBy: 'missions')]
+    #[ORM\ManyToMany(targetEntity: Target::class, inversedBy: 'missions')]
     private $target;
 
 

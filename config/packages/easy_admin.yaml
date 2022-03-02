@@ -1,0 +1,22 @@
+# config/packages/easy_admin.yaml
+easy_admin:
+  
+  entities:
+    Country:
+      # ...
+      list:
+        fields:
+          - { property: 'flag', type: 'flag', base_path: '%app.path.flag_images%' }
+      # ...
+      show:
+        fields:
+          - { property: 'flag', type: 'flag', base_path: '%app.path.flag_images%' }
+    Agent:
+      # ...
+      list:
+        fields:
+          - { property: 'avatar', type: 'avatar', base_path: '%app.path.avatar_images%' }
+      # ...
+      show:
+        fields:
+          - { property: 'avatar', type: 'avatar', base_path: '%app.path.avatar_images%' }

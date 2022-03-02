@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+    {% include 'elements/header.html.twig' %}
+    <div class="flex global-container-small global-container-all flex-col items-center relative">
+        <h1 class="font-orbitron text-white my-8">LISTE DES MISSIONS</h1>
+        <div class="w-4/6 sm:w-3/5 lg:w-2/6 bg-white flex rounded-xl items-center mb-10">
+            <input type="text" placeholder="Search mission" class="w-full rounded-l-xl h-9 px-3 font-open-sans">
+            <button class="text-center pr-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+            </button>
+        </div>
+        <div>
+
+
+            {% for mission in missions %}
+                {% set delay = 50 * loop.index %}
+                {% include 'elements/missionItem.html.twig' with {'delay':delay,'mission':mission} only %}
+            {% endfor %}
+        </div>
+
+    </div>
+    {% include 'elements/footer.html.twig' %}
+{% endblock %}

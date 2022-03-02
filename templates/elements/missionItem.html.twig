@@ -1,0 +1,10 @@
+<div class ="flex w-screen justify-center">
+    <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="{{ delay }}" class="w-4/5 lg:w-3/5 xl:w-2/5 border border-white rounded-lg text-white my-6 h-14 relative">
+        <svg class="svg-icon absolute h-10 top-2 left-2 z-20"  viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <path  d="M850.688 554.666667A341.504 341.504 0 0 1 554.666667 850.688V938.666667h-85.333334v-87.978667A341.504 341.504 0 0 1 173.312 554.666667H85.333333v-85.333334h87.978667A341.504 341.504 0 0 1 469.333333 173.312V85.333333h85.333334v87.978667A341.504 341.504 0 0 1 850.688 469.333333H938.666667v85.333334h-87.978667zM512 768a256 256 0 1 0 0-512 256 256 0 0 0 0 512z m0-128a128 128 0 1 0 0-256 128 128 0 0 0 0 256z" fill="#ffffff" fill-opacity="1" />
+        </svg>
+        <h2 class="opacity-100 absolute left-28 top-4 z-20 font-open-sans font-light text-sm lg:text-lg">{{ mission.title|upper }} </h2>
+        <img class="w-14 h-10 z-20 border border-white absolute right-2 top-2" src="{{ vich_uploader_asset(mission.country, 'flagFile') }}"  alt="a">
+        <a href="" class="block h-full w-full absolute bg-blue-900 opacity-50"></a>
+    </div>
+</div>

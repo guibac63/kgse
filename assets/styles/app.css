@@ -7,13 +7,21 @@
     src: url("/public/fonts/Orbitron.ttf");
 }
 
-.content-container-small{
+.login-container-small{
     min-height: calc(100vh - 9rem)
 }
 
+.global-container-small{
+    min-height: calc(100vh - 9rem - 9rem)
+}
+
+
 @media (min-width: 640px) {
-    .content-container-all{
+    .login-container-all{
         min-height: calc(100vh - 5rem)
+    }
+    .global-container-all{
+        min-height: calc(100vh - 5rem - 5rem)
     }
 }
 

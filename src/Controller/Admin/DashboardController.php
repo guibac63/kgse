@@ -25,6 +25,8 @@ class DashboardController extends AbstractDashboardController
 
         // Option 1. You can make your dashboard redirect to some common page of your backend
         //
+
+
         $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);
         return $this->redirect($adminUrlGenerator->setController(AgentCrudController::class)->generateUrl());
 
@@ -51,14 +53,16 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
+
         //yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Agents', 'fas fa-list', Agent::class);
+        yield MenuItem::linkToUrl('Homepage','fas fa-home' , $this->generateUrl('home') );
+        yield MenuItem::linkToCrud('Agents', 'fas fa-user-secret', Agent::class);
         yield MenuItem::linkToCrud('Missions', 'fas fa-list', Mission::class);
-        yield MenuItem::linkToCrud('Skills', 'fas fa-list', Skills::class);
-        yield MenuItem::linkToCrud('Contacts', 'fas fa-list', Contact::class);
-        yield MenuItem::linkToCrud('Countries', 'fas fa-list', Country::class);
-        yield MenuItem::linkToCrud('Hiding Places', 'fas fa-list', HidingPlace::class);
-        yield MenuItem::linkToCrud('Targets', 'fas fa-list', Target::class);
+        yield MenuItem::linkToCrud('Skills', 'fas fa-atom', Skills::class);
+        yield MenuItem::linkToCrud('Contacts', 'fas fa-address-book', Contact::class);
+        yield MenuItem::linkToCrud('Countries', 'fas fa-globe', Country::class);
+        yield MenuItem::linkToCrud('Hiding Places', 'fas fa-place-of-worship', HidingPlace::class);
+        yield MenuItem::linkToCrud('Targets', 'fas fa-bullseye', Target::class);
 
 
     }
