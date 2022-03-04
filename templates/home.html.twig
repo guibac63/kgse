@@ -4,24 +4,42 @@
 {% block body %}
     {% include 'elements/header.html.twig' %}
     <div class="flex global-container-small global-container-all flex-col items-center relative">
-        <h1 class="font-orbitron text-white my-8">LISTE DES MISSIONS</h1>
-        <div class="w-4/6 sm:w-3/5 lg:w-2/6 bg-white flex rounded-xl items-center mb-10">
-            <input type="text" placeholder="Search mission" class="w-full rounded-l-xl h-9 px-3 font-open-sans">
-            <button class="text-center pr-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-            </button>
+        <div class="w-4/6 sm:w-3/5 lg:w-2/6 bg-white rounded-xl mt-10">
+            <div class="flex w-full">
+                {{ form_start(form,{'attr':{'class' : 'flex w-full '}}) }}
+                {{ form_label(form,' ')}}
+                {{ form_widget(form.search,{'attr':{'class' : 'w-full rounded-l-xl h-9 px-3 font-open-sans'}}) }}
+                <button type="submit" class="text-center pr-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                {{ form_errors(form) }}
+                {{ form_end(form) }}
+            </div>
         </div>
-        <div>
-
-
+        <h1 class="font-orbitron text-white mt-8">LISTE DES MISSIONS</h1>
+        <div >
             {% for mission in missions %}
                 {% set delay = 50 * loop.index %}
                 {% include 'elements/missionItem.html.twig' with {'delay':delay,'mission':mission} only %}
             {% endfor %}
         </div>
 
+        <div class ="text-white mt-20 font-open-sans flex flex-col items-center">
+            {% if not missions %}
+                <span>No results found</span>
+            {% endif %}
+            {% if not isPaginated %}
+                <button class="mt-4 bg-white py-2 px-2 rounded-xl text-red-600 font-orbitron font-bold"><a href={{ path('home') }}>EXIT SEARCH</a></button>
+            {% endif %}
+        </div>
+
+        <div data-aos="fade-up" data-aos-duration="1050" class="font-open-sans text-white text-xl">
+            {% if isPaginated %}
+                {{ knp_pagination_render(missions) }}
+            {% endif %}
+        </div>
     </div>
     {% include 'elements/footer.html.twig' %}
 {% endblock %}

@@ -22,19 +22,19 @@ class MissionRepository extends ServiceEntityRepository
     // /**
     //  * @return Mission[] Returns an array of Mission objects
     //  */
-    /*
-    public function findByExampleField($value)
+
+    //search query to find the match content search input
+    public function findBySearch(string $search)
     {
-        return $this->createQueryBuilder('m')
-            ->andWhere('m.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('m.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        return $this->getEntityManager()->createQuery(
+            'SELECT m FROM  App\Entity\Mission m
+            WHERE m.title LIKE :search
+            ORDER BY m.title ASC'
+        )->setParameters(['search'=>'%'.$search.'%'])
+            ->setMaxResults(5)
+            ->getResult();
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?Mission
@@ -47,4 +47,5 @@ class MissionRepository extends ServiceEntityRepository
         ;
     }
     */
+
 }

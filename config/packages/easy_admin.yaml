@@ -6,17 +6,17 @@ easy_admin:
       # ...
       list:
         fields:
-          - { property: 'flag', type: 'flag', base_path: '%app.path.flag_images%' }
+          - { property: 'flag', type: 'flag', base_path: '%flag_images%' }
       # ...
       show:
         fields:
-          - { property: 'flag', type: 'flag', base_path: '%app.path.flag_images%' }
+          - { property: 'flag', type: 'flag', base_path: '%flag_images%' }
     Agent:
       # ...
       list:
         fields:
-          - { property: 'avatar', type: 'avatar', base_path: '%app.path.avatar_images%' }
+          - { property: 'avatar', type: 'avatar', base_path: '%avatar_images%' }
       # ...
       show:
         fields:
-          - { property: 'avatar', type: 'avatar', base_path: '%app.path.avatar_images%' }
+          - { property: 'avatar', type: 'avatar', base_path: '%avatar_images%' }
