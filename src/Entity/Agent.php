@@ -53,6 +53,9 @@ class Agent
 
     private string $skillsToString;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $code;
+
     public function __construct()
     {
         $this->agent_skills = new ArrayCollection();
@@ -230,6 +233,18 @@ class Agent
     #[Pure] public function __toString(): string
     {
         return ($this->getFirstname().' '.$this->getLastname().' - '.$this->country.' - '.$this->getSkillsToString());
+    }
+
+    public function getCode(): ?string
+    {
+        return $this->code;
+    }
+
+    public function setCode(string $code): self
+    {
+        $this->code = $code;
+
+        return $this;
     }
 
 }

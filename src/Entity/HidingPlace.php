@@ -34,6 +34,9 @@ class HidingPlace
     #[ORM\ManyToMany(targetEntity: Mission::class, mappedBy: 'hidingplace')]
     private $missions;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $code;
+
     public function __construct()
     {
         $this->missions = new ArrayCollection();
@@ -134,5 +137,17 @@ class HidingPlace
     public function __toString()
     {
         return $this->address;
+    }
+
+    public function getCode(): ?string
+    {
+        return $this->code;
+    }
+
+    public function setCode(string $code): self
+    {
+        $this->code = $code;
+
+        return $this;
     }
 }
