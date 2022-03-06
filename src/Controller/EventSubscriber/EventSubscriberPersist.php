@@ -38,7 +38,6 @@ class EventSubscriberPersist implements EventSubscriberInterface
 
     public function setAdminId(BeforeEntityPersistedEvent $event)
     {
-
         $entInstance = $event->getEntityInstance();
 
         //auto creation of code for agents
@@ -57,25 +56,11 @@ class EventSubscriberPersist implements EventSubscriberInterface
             $entInstance->setLastUpdate(new \DateTime('now'));
             return;
         };
-
-
     }
-
-
 
     public function updateAdminId(BeforeEntityUpdatedEvent $event)
     {
         $entInstance = $event->getEntityInstance();
-
-        //auto creation of code for agents
-        if($entInstance instanceof Agent){
-            $entInstance->setCode($entInstance->getId().substr($entInstance->getFirstname(),1,1) .substr($entInstance->getLastname(),1,1));
-        };
-
-        //auto creation of code for hiding places
-        if($entInstance instanceof HidingPlace){
-            $entInstance->setCode(substr($entInstance->getAddress(),-1,3).$entInstance->getId());
-        };
 
         //sauvegarde l'identité de l'administrateur et la date de modification
         if(!$entInstance instanceof Country && !$entInstance instanceof Admin){
@@ -83,8 +68,5 @@ class EventSubscriberPersist implements EventSubscriberInterface
             $entInstance->setLastUpdate(new \DateTime('now'));
             return;
         };
-
-
     }
-
 }

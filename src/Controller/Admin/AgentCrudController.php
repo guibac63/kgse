@@ -61,6 +61,7 @@ class AgentCrudController extends AbstractCrudController
             AssociationField::new('agent_skills')->setFormTypeOption('required',true),
             AssociationField::new('country')->setRequired(true),
             AssociationField::new('missions')->setDisabled(),
+            TextField::new('code')->setDisabled(),
             IdField::new('admin')->hideOnForm()
         ];
     }

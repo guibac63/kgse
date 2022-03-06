@@ -51,6 +51,7 @@ class HidingPlaceCrudController extends AbstractCrudController
             DateTimeField::new('last_update')->hideOnForm(),
             AssociationField::new('country'),
             AssociationField::new('missions')->setDisabled(),
+            TextField::new('code')->setDisabled(),
             IdField::new('admin')->hideOnForm()
         ];
     }

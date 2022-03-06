@@ -3,14 +3,32 @@
 
 {% block body %}
     {% include 'elements/header.html.twig' %}
-    <div class="global-container-small global-container-all">
-        <div class="h-full mx-5 my-10 rounded-lg bg-white/50 flex flex-col items-center">
-            <div class="w-full flex flex-col items-center">
+    <div class="global-container-small global-container-all w-full">
+        <div class="h-full rounded-lg bg-white/50 flex flex-col items-center">
+            <div class="w-full flex flex-col items-center mb-6">
                 {% include 'mission_detail/missionInfo.html.twig' %}
             </div>
-            <div>
-
-            </div>
+            <div class="flex w-full flex-col items-center xl:items-start xl:flex-row">
+                <div class="w-5/6 xl:w-1/4">
+                    {% for agent in missionDetail.agent %}
+                        {% include 'mission_detail/agent.html.twig' with {'agent':agent} only %}
+                    {% endfor %}
+                </div >
+                <div class="w-5/6 xl:w-1/4">
+                    {% for agent in missionDetail.agent %}
+                        {% include 'mission_detail/agent.html.twig' with {'agent':agent} only %}
+                    {% endfor %}
+                </div>
+                <div class="w-5/6 xl:w-1/4">
+                    {% for agent in missionDetail.agent %}
+                        {% include 'mission_detail/agent.html.twig' with {'agent':agent} only %}
+                    {% endfor %}
+                </div>
+                <div class="w-5/6 xl:w-1/4">
+                    {% for agent in missionDetail.agent %}
+                        {% include 'mission_detail/agent.html.twig' with {'agent':agent} only %}
+                    {% endfor %}
+                </div>
         </div>
     </div>
     {% include 'elements/footer.html.twig' %}
