@@ -3,7 +3,7 @@
 
 {% block body %}
     {% include 'elements/header.html.twig' %}
-    <div class="flex global-container-small global-container-all flex-col items-center relative">
+    <div id="#relator" class="flex global-container-small global-container-all flex-col items-center relative">
         <div class="w-4/6 sm:w-3/5 lg:w-2/6 bg-white rounded-xl mt-10">
             <div class="flex w-full">
                 {{ form_start(form,{'attr':{'class' : 'flex w-full '}}) }}
@@ -35,7 +35,7 @@
             {% endif %}
         </div>
 
-        <div data-aos="fade-up" data-aos-duration="1050" class="font-open-sans text-white text-xl">
+        <div  class="font-open-sans text-white text-xl">
             {% if isPaginated %}
                 {{ knp_pagination_render(missions) }}
             {% endif %}

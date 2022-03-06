@@ -15,4 +15,6 @@ import './bootstrap';
 
 require('@fortawesome/fontawesome-free/css/all.min.css');
 
-AOS.init();
+AOS.init({
+    once:true
+});

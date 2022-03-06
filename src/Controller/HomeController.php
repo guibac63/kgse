@@ -50,7 +50,6 @@ class HomeController extends AbstractController
                 $request->query->getInt('page',1),
                 5
             );
-
         };
 
         return $this->render('home.html.twig', [
@@ -59,7 +58,5 @@ class HomeController extends AbstractController
             'isPaginated'=>$isPaginated]
         );
     }
-
-
 
 }

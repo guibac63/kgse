@@ -19,7 +19,10 @@
                 </a>
             {% endif %}
         </div>
-        <div class="font-orbitron" >KGSE</div>
+        <div class="font-orbitron flex justify-start mr-6" >
+            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon h-8 w-8" viewBox="0 0 512 512"><title>Color Filter</title><circle cx="256" cy="184" r="120" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/><circle cx="344" cy="328" r="120" fill="#FF0000" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/><circle cx="168" cy="328" r="120" fill="#aaaaaa" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/></svg>
+            <span class="ml-2">KGSE</span>
+        </div>
         <div class="rounded-full bg-white border-4 border-white">
             {% if app.user %}
                 <a href={{ path('admin') }}>
