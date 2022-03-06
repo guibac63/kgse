@@ -9,25 +9,25 @@
                 {% include 'mission_detail/missionInfo.html.twig' %}
             </div>
             <div class="flex w-full flex-col items-center xl:items-start xl:flex-row">
-                <div class="w-5/6 xl:w-1/4">
+                <div class="w-5/6 md:w-3/5 xl:w-1/4">
                     {% for agent in missionDetail.agent %}
                         {% include 'mission_detail/agent.html.twig' with {'agent':agent} only %}
                     {% endfor %}
                 </div >
-                <div class="w-5/6 xl:w-1/4">
-                    {% for agent in missionDetail.agent %}
-                        {% include 'mission_detail/agent.html.twig' with {'agent':agent} only %}
+                <div class="w-5/6 md:w-3/5 xl:w-1/4">
+                    {% for contact in missionDetail.contact %}
+                        {% include 'mission_detail/contact.html.twig' with {'contact':contact} only %}
                     {% endfor %}
                 </div>
-                <div class="w-5/6 xl:w-1/4">
-                    {% for agent in missionDetail.agent %}
-                        {% include 'mission_detail/agent.html.twig' with {'agent':agent} only %}
-                    {% endfor %}
+                <div class="w-5/6 md:w-3/5 xl:w-1/4">
+{#                    {% for agent in missionDetail.agent %}#}
+{#                        {% include 'mission_detail/agent.html.twig' with {'agent':agent} only %}#}
+{#                    {% endfor %}#}
                 </div>
-                <div class="w-5/6 xl:w-1/4">
-                    {% for agent in missionDetail.agent %}
-                        {% include 'mission_detail/agent.html.twig' with {'agent':agent} only %}
-                    {% endfor %}
+                <div class="w-5/6 md:w-3/5 xl:w-1/4">
+{#                    {% for agent in missionDetail.agent %}#}
+{#                        {% include 'mission_detail/agent.html.twig' with {'agent':agent} only %}#}
+{#                    {% endfor %}#}
                 </div>
         </div>
     </div>
