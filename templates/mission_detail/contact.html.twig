@@ -2,7 +2,7 @@
     <i class="fa-solid fa-address-book fa-3x m-2"></i>
     <h1 class="mx-2"> {{ contact.codename|upper }} </h1>
     <p class="text-black bg-gray-50 my-4 py-2 px-5 text-center align-middle flex flex-col items-center rounded-lg w-5/6">
-        <span class="mb-1" >{{ contact.firstname }} {{ contact.lastname }}</span>
+        <span class="mb-1" >{{ contact.firstname|upper }} {{ contact.lastname|upper }}</span>
         <span class="mb-1">{{ contact.birthdate|date("d/m/Y") }}</span>
     </p>
     <p class="text-black bg-gray-50 m-4 py-2 px-5 text-center  flex justify-center items-center rounded-lg w-5/6">

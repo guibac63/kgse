@@ -2,7 +2,7 @@
     <i class="fa-solid fa-user-secret fa-3x m-2"></i>
     <h1 class="mx-2"> AGENT N° {{ agent.code|upper }} </h1>
     <p class="text-black bg-gray-50 my-4 py-2 px-5 text-center align-middle flex flex-col items-center rounded-lg w-5/6">
-        <span class="mb-1" >{{ agent.firstname }} {{ agent.lastname }}</span>
+        <span class="mb-1" >{{ agent.firstname|upper }} {{ agent.lastname|upper }}</span>
         <span class="mb-1">{{ agent.birthdate|date("d/m/Y") }}</span>
         <img class="z-20 border rounded-full w-16 h-16 border-white right-2 top-2" src="{{ vich_uploader_asset(agent, 'avatarFile') }}"  alt="agent avatar {{ agent.code }}">
 
