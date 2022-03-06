@@ -2,15 +2,21 @@
     <div class=" flex h-36 sm:h-20 text-white items-center justify-between mx-8 text-2xl ">
         <div>
             {% if app.user %}
-                <a href="{{ path('app_logout') }}" class="bg-red-600 border border-white py-2 px-3 rounded-xl hidden sm:block text-sm font-bold font-orbitron" >LOGOUT</a>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 text-white sm:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                </svg>
+                <a href="{{ path('app_logout') }}" class="bg-red-600 border border-white py-2 px-3 rounded-xl hidden sm:block text-sm font-bold font-orbitron" >
+                    LOGOUT
+                </a>
+                <a href="{{ path('app_logout') }}" class="block h-14 w-14 sm:hidden" >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 text-white sm:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                </a>
             {% else %}
                 <a href="{{ path('app_login') }}" class=" bg-white py-2 px-3 rounded-xl text-red-600 sm:block text-sm hidden font-bold font-orbitron">LOG IN</a>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 text-white sm:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
-                </svg>
+                <a href="{{ path('app_login') }}" class="block h-14 w-14 sm:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14 text-white sm:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+                    </svg>
+                </a>
             {% endif %}
         </div>
         <div class="font-orbitron" >KGSE</div>
@@ -20,7 +26,7 @@
                     <img src="{{ asset('/images/admin/08.jpg') }}" alt="admin-avatar" class="object-fill h-12 w-12 rounded-full">
                 </a>
             {% else %}
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 text-black " viewBox="0 0 20 20" fill="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 text-black" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
                 </svg>
             {% endif %}

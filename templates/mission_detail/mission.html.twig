@@ -5,6 +5,11 @@
     {% include 'elements/header.html.twig' %}
     <div class="global-container-small global-container-all w-full">
         <div class="h-full rounded-lg bg-white/50 flex flex-col items-center">
+            <div class="rounded-full bg-white border-2 border-black mt-6 ml-4">
+                <a href="{{ path('home') }}">
+                    <i class="fa-solid fa-house-chimney fa-2x p-1 hover:text-red-600/75"></i>
+                </a>
+            </div>
             <div class="w-full flex flex-col items-center mb-6">
                 {% include 'mission_detail/missionInfo.html.twig' %}
             </div>
@@ -29,7 +34,9 @@
                         {% include 'mission_detail/hidingPlace.html.twig' with {'hidingPlace':hidingPlace} only %}
                     {% endfor %}
                 </div>
+
         </div>
+
     </div>
     {% include 'elements/footer.html.twig' %}
 {% endblock %}
