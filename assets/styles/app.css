@@ -29,7 +29,7 @@
 }
 
 @media (max-width: 450px) {
-    html{
+    .size-mobile{
         font-size: 22px;
     }
 }
