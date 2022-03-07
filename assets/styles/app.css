@@ -28,7 +28,9 @@
     }
 }
 
-@media (max-width: 400px) {
+@media screen
+and (max-width: 400px)
+and (min-width: 200px){
     .size-mobile{
         font-size: 22px;
     }
