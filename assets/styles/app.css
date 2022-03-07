@@ -30,7 +30,7 @@
 
 @media (max-width: 450px) {
     .size-mobile{
-        font-size: 22px;
+        font-size: 22px !important;
     }
 }
 
