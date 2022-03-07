@@ -29,7 +29,7 @@
 }
 
 @media screen
-and (max-width: 400px)
+and (max-width: 500px)
 and (min-width: 200px){
     .size-mobile{
         font-size: 12px;
