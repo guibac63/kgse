@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="h-screen size-mobile">
+<html class="h-screen">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
@@ -8,19 +8,11 @@
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
-        add style to mobile elements
-        <style scoped>
-            @media (max-width: 450px) {
-                .size-mobile{
-                    font-size: 22px !important;
-                }
-            }
-        </style>
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <body class="bg-kgse-bg bg-cover bg-no-repeat h-screen bg-fixed">
+    <body class="bg-kgse-bg bg-cover bg-no-repeat h-screen bg-fixed size-mobile">
         {% block body %}{% endblock %}
     </body>
 </html>
