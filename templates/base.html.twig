@@ -8,7 +8,14 @@
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
-
+        add style to mobile elements
+        <style scoped>
+            @media (max-width: 450px) {
+                .size-mobile{
+                    font-size: 22px !important;
+                }
+            }
+        </style>
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
