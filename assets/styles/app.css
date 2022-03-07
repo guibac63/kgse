@@ -28,4 +28,10 @@
     }
 }
 
+@media (max-width: 450px) {
+    html{
+        font-size: 22px;
+    }
+}
+
 
