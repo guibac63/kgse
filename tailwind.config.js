@@ -5,7 +5,7 @@ module.exports = {
   ],
   theme: {
       fontFamily:{
-        'open-sans':['"Open Sans"','ui-sans-serif'],
+        'open-sans':['"Open Sans"','"Segoe UI"','Arial'],
         'orbitron':['Orbitron','Arial'],
           'segoe':['"Segoe UI"','Helvetica Neue']
       },

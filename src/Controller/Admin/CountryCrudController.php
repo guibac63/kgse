@@ -23,8 +23,8 @@ class CountryCrudController extends AbstractCrudController
     {
         return [
             TextField::new('name'),
-            TextField::new('flagFile')->setFormType(VichImageType::class)->hideOnIndex()->onlyWhenCreating(),
-            ImageField::new('flag')->setBasePath('/images/flags/'),
+            TextField::new('flagFile')->setFormType(VichImageType::class)->hideOnIndex(),
+            ImageField::new('flag')->setBasePath('/images/flags/')->onlyOnIndex(),
         ];
     }
 

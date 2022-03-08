@@ -5,7 +5,7 @@
         <span class="mb-1" >{{ target.firstname|upper }} {{ target.lastname|upper }}</span>
         <span class="mb-1">{{ target.birthdate|date("d/m/Y") }}</span>
     </p>
-    <p class="text-black bg-gray-50 m-4 py-2 px-5 text-center  flex justify-center items-center rounded-lg w-5/6">
+    <p class="text-black bg-gray-50 m-4 py-2 px-5 text-center flex justify-center items-center rounded-lg w-5/6">
         <span>{{ target.country.name|upper }}</span>
         <img class="w-10 h-6 z-20 border border-white right-2 top-1 ml-4" src="{{ vich_uploader_asset(target.country, 'flagFile') }}"  alt="country flag {{ target.country.name }}">
     </p>
