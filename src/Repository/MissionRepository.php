@@ -28,14 +28,10 @@ class MissionRepository extends ServiceEntityRepository
     {
         return $this->getEntityManager()->createQuery(
             'SELECT m FROM  App\Entity\Mission m
-             WHERE m.title LIKE LOWER(:search)
-             OR m.title LIKE LOWER(:search_begin)
-             OR m.title LIKE LOWER(:search_end)
+             WHERE LOWER(m.title) LIKE LOWER(:search)
              ORDER BY m.title ASC'
         )->setParameters([
                 'search'=>'%'.$search.'%',
-                'search_begin'=>'%'.$search,
-                'search_end'=>$search.'%'
             ])
             ->setMaxResults(5)
             ->getResult();
